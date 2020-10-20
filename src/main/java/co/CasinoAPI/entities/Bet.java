@@ -8,4 +8,13 @@ public class Bet {
         this.userId=userId;
         this.value=value;
     }
+
+    public int getUserId() {
+
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

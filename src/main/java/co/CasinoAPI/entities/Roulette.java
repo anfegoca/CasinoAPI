@@ -25,6 +25,16 @@ public class Roulette {
         }
     }
 
+    public boolean bet(Bet bet){
+        if(open){
+
+            return bets.add(bet);
+        }else{
+
+            return false;
+        }
+    }
+
     public int getId() {
 
         return id;

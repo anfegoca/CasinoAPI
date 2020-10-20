@@ -1,10 +1,9 @@
 package co.CasinoAPI.services.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
+import co.CasinoAPI.entities.Bet;
 import org.springframework.stereotype.Component;
 
 import co.CasinoAPI.entities.Roulette;
@@ -13,7 +12,7 @@ import co.CasinoAPI.services.RouletteService;
 @Component
 public class RouletteServiceImp implements RouletteService {
 
-    private List<Roulette> roulettes = new ArrayList<>();
+    private final List<Roulette> roulettes = new ArrayList<>();
 
     @Override
     public boolean saveRoulette(Roulette roulette) {
@@ -39,6 +38,7 @@ public class RouletteServiceImp implements RouletteService {
         for(Roulette r: roulettes){
             if(r.getId() == id){
                 exists = true;
+                break;
             }
         }
         return exists;
@@ -55,6 +55,11 @@ public class RouletteServiceImp implements RouletteService {
         return findById(id).open();
     }
 
-    
-    
+    @Override
+    public boolean betColor(int id, Bet bet) {
+
+        return findById(id).bet(bet);
+    }
+
+
 }

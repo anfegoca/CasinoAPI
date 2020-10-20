@@ -2,18 +2,21 @@ package co.CasinoAPI.services;
 
 import java.util.List;
 
+import co.CasinoAPI.entities.Bet;
 import co.CasinoAPI.entities.Roulette;
 
 public interface RouletteService {
 
-    public abstract boolean saveRoulette(Roulette roulette);
+    boolean saveRoulette(Roulette roulette);
 
-    public abstract Roulette findById(int id);
+    Roulette findById(int id);
 
-    public abstract boolean idExists(int id);
+    boolean idExists(int id);
 
-    public abstract List<Roulette> findAll();
+    List<Roulette> findAll();
 
-    public abstract boolean openRoulette(int id);
+    boolean openRoulette(int id);
+
+    boolean betColor(int id, Bet bet);
 
 }

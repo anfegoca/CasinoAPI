@@ -3,11 +3,11 @@ package co.CasinoAPI.Controller;
 import java.util.List;
 import java.util.Random;
 
+import co.CasinoAPI.Exceptions.CasinoException;
+import co.CasinoAPI.entities.Bet;
+import co.CasinoAPI.services.BetFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import co.CasinoAPI.entities.Roulette;
 import co.CasinoAPI.services.RouletteFactory;
@@ -39,9 +39,20 @@ public class CasinoController {
 
     @GetMapping("/openRoulette")
     @ResponseBody
-    public boolean openRoulette(@RequestParam(required = true) int id) {
+    public boolean openRoulette(@RequestParam int id) {
 
         return rouletteService.openRoulette(id);
+    }
+    @GetMapping("/betColor")
+    public boolean betColor(@RequestParam int id, @RequestParam char color, @RequestParam int value, @RequestHeader int userId){
+        Bet bet = null;
+        try {
+            bet = BetFactory.getInstance().createBet(userId, value, color);
+        }catch (CasinoException exception){
+
+            return false;
+        }
+        return rouletteService.betColor(id,bet);
     }
 
     @GetMapping("/getRoulettes")
