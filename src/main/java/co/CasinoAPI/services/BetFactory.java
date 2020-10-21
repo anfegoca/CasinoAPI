@@ -21,13 +21,20 @@ public class BetFactory {
         }else if(!(color == 'b' || color == 'r')){
             throw new CasinoException(CasinoException.INVALID_COLOR);
         }else{
+
             return new BetColor(userId, value, color);
         }
     }
 
-    public Bet createBet(int userId, int value, int number){
-
-        return new BetNumber(userId, value, number);
+    public Bet createBet(int userId, int value, int number) throws CasinoException {
+        if(value < 0 || value > 10000){
+            throw new CasinoException(CasinoException.INVALID_VALUE);
+        }else if(number < 0 || number > 36){
+            throw new CasinoException(CasinoException.INVALID_NUMBER);
+        }else{
+            
+            return new BetNumber(userId, value, number);
+        }
     }
 
 }

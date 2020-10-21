@@ -17,6 +17,6 @@ public interface RouletteService {
 
     boolean openRoulette(int id);
 
-    boolean betColor(int id, Bet bet);
+    boolean bet(int id, Bet bet);
 
 }

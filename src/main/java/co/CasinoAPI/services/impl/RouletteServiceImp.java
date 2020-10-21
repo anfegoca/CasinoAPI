@@ -56,7 +56,7 @@ public class RouletteServiceImp implements RouletteService {
     }
 
     @Override
-    public boolean betColor(int id, Bet bet) {
+    public boolean bet(int id, Bet bet) {
 
         return findById(id).bet(bet);
     }
