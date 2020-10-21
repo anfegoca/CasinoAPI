@@ -2,37 +2,63 @@ package co.CasinoAPI.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Roulette {
     private int id;
     private boolean open;
     private List<Bet> bets;
 
-    public Roulette(int id){
-        this.id=id;
-        open=false;
-        bets= new ArrayList<>();
+    public Roulette(int id) {
+        this.id = id;
+        open = false;
+        bets = new ArrayList<>();
     }
 
-    public boolean open(){
-        if(open){
-            
+    public boolean open() {
+        if (open) {
+
             return false;
-        }else{
+        } else {
             open = true;
 
             return true;
         }
     }
 
-    public boolean bet(Bet bet){
-        if(open){
+    public boolean bet(Bet bet) {
+        if (open) {
 
             return bets.add(bet);
-        }else{
+        } else {
 
             return false;
         }
+    }
+
+    public List<Bill> close() {
+        if (!open) {
+            
+            return null;
+        } else {
+
+            List<Bill> bills = new ArrayList<>();
+            int winningNumber = spin();
+            System.out.println(winningNumber);
+            for (Bet b : bets) {
+                bills.add(b.collect(winningNumber));
+            }
+            bets.clear();
+
+            return bills;
+        }
+    }
+
+    private int spin() {
+        Random random = new Random();
+        int winningNumber = random.nextInt(36) + 1;
+
+        return winningNumber;
     }
 
     public int getId() {
@@ -62,6 +88,4 @@ public class Roulette {
         this.bets = bets;
     }
 
-    
-    
 }

@@ -1,4 +1,4 @@
-package co.CasinoAPI.services;
+package co.CasinoAPI.services.Factory;
 
 import co.CasinoAPI.Exceptions.CasinoException;
 import co.CasinoAPI.entities.Bet;

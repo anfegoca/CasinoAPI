@@ -1,13 +1,15 @@
 package co.CasinoAPI.entities;
 
-public class Bet {
-    private int userId;
-    private int value;
+public abstract class Bet {
+    protected int userId;
+    protected double value;
 
-    public Bet(int userId, int value){
+    public Bet(int userId, double value){
         this.userId=userId;
         this.value=value;
     }
+
+    public abstract Bill collect(int number);
 
     public int getUserId() {
 
@@ -18,12 +20,12 @@ public class Bet {
         this.userId = userId;
     }
 
-    public int getValue() {
-        
+    public double getValue() {
+
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 }

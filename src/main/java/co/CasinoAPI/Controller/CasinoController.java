@@ -5,12 +5,13 @@ import java.util.Random;
 
 import co.CasinoAPI.Exceptions.CasinoException;
 import co.CasinoAPI.entities.Bet;
-import co.CasinoAPI.services.BetFactory;
+import co.CasinoAPI.entities.Bill;
+import co.CasinoAPI.services.Factory.BetFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import co.CasinoAPI.entities.Roulette;
-import co.CasinoAPI.services.RouletteFactory;
+import co.CasinoAPI.services.Factory.RouletteFactory;
 import co.CasinoAPI.services.RouletteService;
 
 @RestController
@@ -67,6 +68,12 @@ public class CasinoController {
         }
 
         return rouletteService.bet(id, bet);
+    }
+
+    @GetMapping("/closeRoulette")
+    public List<Bill> closeRoulette(@RequestParam int id){
+
+        return rouletteService.closeRoulette(id);
     }
 
 
