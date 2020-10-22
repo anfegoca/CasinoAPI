@@ -8,7 +8,7 @@ import co.CasinoAPI.entities.Roulette;
 
 public interface RouletteService {
 
-    boolean saveRoulette(Roulette roulette);
+    void saveRoulette(Roulette roulette);
 
     Roulette findById(int id);
 
@@ -21,5 +21,7 @@ public interface RouletteService {
     boolean bet(int id, Bet bet);
 
     List<Bill> closeRoulette(int id);
+
+    void deleteAll();
 
 }

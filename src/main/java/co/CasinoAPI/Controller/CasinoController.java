@@ -83,4 +83,9 @@ public class CasinoController {
         return rouletteService.findAll();
     }
 
+    @GetMapping("/deleteAll")
+    public void deleteAll(){
+        rouletteService.deleteAll();
+    }
+
 }

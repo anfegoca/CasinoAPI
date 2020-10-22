@@ -1,6 +1,7 @@
 package co.CasinoAPI.entities;
 
 public abstract class Bet {
+    
     protected int userId;
     protected double value;
 
@@ -28,4 +29,6 @@ public abstract class Bet {
     public void setValue(double value) {
         this.value = value;
     }
+
+    
 }

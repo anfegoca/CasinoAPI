@@ -1,10 +1,14 @@
 package co.CasinoAPI.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Roulette {
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("Roulette")
+public class Roulette implements Serializable{
     private int id;
     private boolean open;
     private List<Bet> bets;
@@ -38,10 +42,10 @@ public class Roulette {
 
     public List<Bill> close() {
         if (!open) {
-            
+
             return null;
         } else {
-
+            open=false;
             List<Bill> bills = new ArrayList<>();
             int winningNumber = spin();
             System.out.println(winningNumber);
@@ -87,5 +91,4 @@ public class Roulette {
     public void setBets(List<Bet> bets) {
         this.bets = bets;
     }
-
 }

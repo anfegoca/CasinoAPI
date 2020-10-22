@@ -3,9 +3,11 @@ package co.CasinoAPI.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.CasinoAPI.Repository.RouletteRepository;
 import co.CasinoAPI.entities.Bet;
 import co.CasinoAPI.entities.Bill;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.CasinoAPI.entities.Roulette;
@@ -14,80 +16,87 @@ import co.CasinoAPI.services.RouletteService;
 @Component
 public class RouletteServiceImp implements RouletteService {
 
-    private final List<Roulette> roulettes = new ArrayList<>();
+    @Autowired
+    private RouletteRepository rouletteRepository;
 
     @Override
-    public boolean saveRoulette(Roulette roulette) {
-
-        return roulettes.add(roulette);
+    public void saveRoulette(Roulette roulette) {
+        rouletteRepository.save(roulette);
     }
-
+    
     @Override
     public Roulette findById(int id) {
-        Roulette roulette = null;
-        for (Roulette r : roulettes) {
-            if (r.getId() == id) {
-                roulette = r;
-            }
-        }
 
-        return roulette;
+        return rouletteRepository.findById(id).get();
     }
 
     @Override
     public boolean idExists(int id) {
-        boolean exists = false;
-        for (Roulette r : roulettes) {
-            if (r.getId() == id) {
-                exists = true;
-                break;
-            }
-        }
 
-        return exists;
+        return rouletteRepository.existsById(id);
     }
 
     @Override
     public List<Roulette> findAll() {
+        List<Roulette> roulettes = new ArrayList<>();
+        for(Roulette r: rouletteRepository.findAll()){
+            roulettes.add(r);
+        }
 
         return roulettes;
     }
-
+    
     @Override
     public boolean openRoulette(int id) {
+        boolean done;
         Roulette roulette = findById(id);
         if(roulette == null){
-            return false;
+            done = false;
         }else{
-
-            return roulette.open();    
+            done = roulette.open();
+            rouletteRepository.save(roulette);
+               
         }
 
-    }
+        return done; 
 
+    }
+    
+    
     @Override
     public boolean bet(int id, Bet bet) {
+        boolean done;
         Roulette roulette = findById(id);
         if(roulette == null){
-
-            return false;
+            done = false;
         }else{
-
-            return roulette.bet(bet);
+            done = roulette.bet(bet);
+            rouletteRepository.save(roulette);
         }
+
+        return done;
+    }
+ 
+    @Override
+    public List<Bill> closeRoulette(int id) {
+        List<Bill> bills;
+        Roulette roulette = findById(id);
+        if(roulette == null){
+            bills = null;
+        }else{
+            bills = roulette.close();
+            rouletteRepository.save(roulette);
+        }
+
+        return bills;
     }
 
     @Override
-    public List<Bill> closeRoulette(int id) {
-        Roulette roulette = findById(id);
-        if(roulette == null){
-            
-            return null;
-        }else{
+    public void deleteAll() {
+        rouletteRepository.deleteAll();
 
-            return roulette.close();
-        }
     }
+    
 
 
 }

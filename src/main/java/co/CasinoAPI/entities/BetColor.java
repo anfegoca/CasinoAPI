@@ -2,21 +2,13 @@ package co.CasinoAPI.entities;
 
 import co.CasinoAPI.services.Factory.BillFactory;
 
-public class BetColor extends Bet {
+public class BetColor extends Bet{
+    
     private char color;
 
     public BetColor(int userId, double value, char color) {
         super(userId, value);
         this.color=color;
-    }
-
-    public char getColor() {
-
-        return color;
-    }
-
-    public void setColor(char color) {
-        this.color = color;
     }
 
     @Override
@@ -28,4 +20,14 @@ public class BetColor extends Bet {
 
         return BillFactory.getInstance().createBill(userId, gain);
     }
+
+    public char getColor() {
+
+        return color;
+    }
+
+    public void setColor(char color) {
+        this.color = color;
+    }
+    
 }

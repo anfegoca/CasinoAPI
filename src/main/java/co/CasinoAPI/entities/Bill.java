@@ -10,6 +10,7 @@ public class Bill {
     }
 
     public int getUserId() {
+
         return userId;
     }
 
@@ -18,6 +19,7 @@ public class Bill {
     }
 
     public double getGain() {
+        
         return gain;
     }
 
