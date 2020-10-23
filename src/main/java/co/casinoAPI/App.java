@@ -1,4 +1,4 @@
-package co.CasinoAPI;
+package co.casinoAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

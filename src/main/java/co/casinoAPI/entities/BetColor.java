@@ -1,12 +1,12 @@
-package co.CasinoAPI.entities;
+package co.casinoAPI.entities;
 
-import co.CasinoAPI.services.Factory.BillFactory;
+import co.casinoAPI.services.factory.BillFactory;
 
 public class BetColor extends Bet{
     
-    private char color;
+    private String color;
 
-    public BetColor(int userId, double value, char color) {
+    public BetColor(int userId, double value, String color) {
         super(userId, value);
         this.color=color;
     }
@@ -14,19 +14,19 @@ public class BetColor extends Bet{
     @Override
     public Bill collect(int number) {
         double gain = 0;
-        if( (number % 2 == 0 && color == 'r') || (number % 2 == 1 && color == 'b') ){
+        if( (number % 2 == 0 && "red".equals(color)) || (number % 2 == 1 && "black".equals(color)) ){
             gain = value * 1.8;
         }
 
         return BillFactory.getInstance().createBill(userId, gain);
     }
 
-    public char getColor() {
+    public String getColor() {
 
         return color;
     }
 
-    public void setColor(char color) {
+    public void setColor(String color) {
         this.color = color;
     }
     

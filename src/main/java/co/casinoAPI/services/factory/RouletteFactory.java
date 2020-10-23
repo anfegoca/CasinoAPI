@@ -1,6 +1,6 @@
-package co.CasinoAPI.services.Factory;
+package co.casinoAPI.services.factory;
 
-import co.CasinoAPI.entities.Roulette;
+import co.casinoAPI.entities.Roulette;
 
 public class RouletteFactory {
 

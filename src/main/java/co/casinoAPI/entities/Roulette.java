@@ -1,4 +1,4 @@
-package co.CasinoAPI.entities;
+package co.casinoAPI.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +48,6 @@ public class Roulette implements Serializable{
             open=false;
             List<Bill> bills = new ArrayList<>();
             int winningNumber = spin();
-            System.out.println(winningNumber);
             for (Bet b : bets) {
                 bills.add(b.collect(winningNumber));
             }

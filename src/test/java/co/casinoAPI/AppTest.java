@@ -1,4 +1,4 @@
-package co.CasinoAPI;
+package co.casinoAPI;
 
 import static org.junit.Assert.assertTrue;
 
