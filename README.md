@@ -42,6 +42,8 @@ java -cp target/classes;target/dependency/* co.casinoAPI.App
 luego abrimos la siguiente pagina: http://localhost:8080/<función>, nos aparecerá la siguiente página, donde podremos realizar las operaciones que queramos reemplazando
 <función> por cualquiera de las funciones que se describieron anteriormente.
 
+![img](https://github.com/anfegoca/CasinoAPI/blob/main/resources/1.png)
+
 Tambien se puede crear un contenedor en Docker a partir del siguiente comando
 
 ```bash
@@ -70,6 +72,8 @@ El versionamiento se realizó a través de [github](https://github.com/anfegoca/
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/anfegoca/CasinoAPI/blob/main/LICENSE) file for details
 
 ## Design
+
+![design](https://github.com/anfegoca/CasinoAPI/blob/main/resources/Class%20Diagram.png)
 
 La clase principal es **CasinoController**, es la que proporciona las funcionalidades de la **API**, cuando se va a crear una ruleta, representada por la clase **Roulette** se hace a través de la clase **RouletteFactory**, después se
 usa la interfaz **RouletteService**, la cual es inyectada en la clase principal, obteniendo **RouletteServiceImp**, esta clase se comunica directamente con **RouletteRepository** la cual también es inyectada
