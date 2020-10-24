@@ -12,13 +12,11 @@ public class Roulette implements Serializable{
     private int id;
     private boolean open;
     private List<Bet> bets;
-
     public Roulette(int id) {
         this.id = id;
         open = false;
         bets = new ArrayList<>();
     }
-
     public boolean open() {
         if (open) {
 
@@ -29,7 +27,6 @@ public class Roulette implements Serializable{
             return true;
         }
     }
-
     public boolean bet(Bet bet) {
         if (open) {
 
@@ -39,7 +36,6 @@ public class Roulette implements Serializable{
             return false;
         }
     }
-
     public List<Bill> close() {
         if (!open) {
 
@@ -56,37 +52,30 @@ public class Roulette implements Serializable{
             return bills;
         }
     }
-
     private int spin() {
         Random random = new Random();
         int winningNumber = random.nextInt(36) + 1;
 
         return winningNumber;
     }
-
     public int getId() {
 
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public boolean isOpen() {
 
         return open;
     }
-
     public void setOpen(boolean open) {
         this.open = open;
     }
-
     public List<Bet> getBets() {
 
         return bets;
     }
-
     public void setBets(List<Bet> bets) {
         this.bets = bets;
     }

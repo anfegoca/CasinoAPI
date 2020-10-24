@@ -6,13 +6,11 @@ import java.util.Collections;
 
 @SpringBootApplication
 public class App{
-
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(App.class);
         app.setDefaultProperties(Collections.singletonMap("server.port",getPort()));
         app.run(args);
     }
-
     static int getPort() {
         if (System.getenv("PORT") != null) {
 
