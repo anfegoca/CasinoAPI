@@ -1,4 +1,5 @@
 # Casino API
+[![anfegoca](https://circleci.com/gh/anfegoca/CasinoAPI.svg?style=svg)](https://app.circleci.com/pipelines/github/anfegoca/CasinoAPI)
 
 
 Este programa ofrece es una API que representa un servicio de apuestas en ruletas, ofrece las siguientes funciones:
